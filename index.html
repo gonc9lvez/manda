@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trilogia Homem-Aranha</title>
+    <title>O Espetacular Homem-Aranha</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -13,32 +13,41 @@
 
     <nav>
         <div class="container nav-container">
-            <div class="logo">Spider-Web</div>
-            <span class="badge">Trilogia Clássica</span>
+            <div class="logo">Spider-Garfield</div>
+            <div class="nav-controls">
+                <span class="badge">Saga Andrew Garfield</span>
+                <button class="btn-theme" id="theme-btn" onclick="toggleTheme()">🌙 Modo Escuro</button>
+            </div>
         </div>
     </nav>
 
     <header>
-        <div class="container">
-            <h1>Com Grandes Poderes,<br>Vêm Grandes Responsabilidades</h1>
-            <p class="subtitle">O guia definitivo sobre a inesquecível trilogia do Homem-Aranha dirigida por Sam Raimi e estrelada por Tobey Maguire.</p>
+        <div class="container header-content">
+            <div class="actor-hero">
+                <img src="https://images.unsplash.com/photo-1635863138275-d9b33299680b?auto=format&fit=crop&w=600&q=80" alt="Andrew Garfield como Homem-Aranha" class="actor-img">
+                <div class="header-text">
+                    <h1>O Espetacular<br>Homem-Aranha</h1>
+                    <p class="subtitle">A jornada de Peter Parker interpretado por Andrew Garfield: ágil, carismático e marcante.</p>
+                </div>
+            </div>
         </div>
     </header>
 
     <main class="container">
         <div class="intro-box">
             <p class="intro">
-                Lançada no início dos anos 2000, a trilogia do Homem-Aranha revolucionou o cinema de super-heróis. Com uma mistura perfeita de ação, drama humano e vilões marcantes, Peter Parker mostrou ao mundo o peso de equilibrar a vida de um jovem comum com o dever de salvar Nova York.
+                Com uma abordagem mais moderna, cheia de atitude e foco nos mistérios do passado dos pais de Peter Parker, a duologia estrelada por Andrew Garfield trouxe sequências de teia alucinantes e uma química inesquecível entre Peter e Gwen Stacy.
             </p>
         </div>
 
         <section class="grid">
+            <!-- Lacuna Filme 1 -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1635863138275-d9b33299680b?auto=format&fit=crop&w=800&q=80" alt="Homem-Aranha 1" class="card-img">
+                <img src="https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?auto=format&fit=crop&w=800&q=80" alt="O Espetacular Homem-Aranha 1" class="card-img">
                 <div class="card-content">
-                    <h3>Homem-Aranha (2002)</h3>
+                    <h3>O Espetacular Homem-Aranha (2012)</h3>
                     <div class="card-text" id="text-1">
-                        <p>O início de tudo. Acompanhamos a picada da aranha geneticamente modificada, a trágica perda do Tio Ben e o surgimento do Duende Verde (Norman Osborn). É o filme que estabeleceu a jornada do herói e provou o potencial das adaptações de quadrinhos nos cinemas modernos.</p>
+                        <p>Peter Parker investiga o desaparecimento de seus pais e acaba no laboratório da Oscorp. Lá, ele é picado por uma aranha modificada e ganha superpoderes. Enfrentando o dr. Curt Connors transformado no temível Lagarto, Peter precisa aprender o verdadeiro peso de proteger a cidade.</p>
                     </div>
                     <button class="btn-toggle" onclick="toggleText('text-1', this)">
                         <span>Ler mais</span> &downarrow;
@@ -46,27 +55,15 @@
                 </div>
             </div>
            
+            <!-- Lacuna Filme 2 -->
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?auto=format&fit=crop&w=800&q=80" alt="Homem-Aranha 2" class="card-img">
+                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="O Espetacular Homem-Aranha 2" class="card-img">
                 <div class="card-content">
-                    <h3>Homem-Aranha 2 (2004)</h3>
+                    <h3>O Espetacular Homem-Aranha 2: A Ameaça de Electro (2014)</h3>
                     <div class="card-text" id="text-2">
-                        <p>Aclamado como uma das melhores sequências de super-heróis de todos os tempos. Peter Parker enfrenta o bloqueio de seus poderes enquanto lida com a dor de perder sua vida pessoal e a ameaça do trágico Doutor Octopus (Doc Ock). A cena do trem continua icônica.</p>
+                        <p>O herói precisa lidar com vilões poderosos como Electro e o Duende Verde (Harry Osborn). Em meio a batalhas eletrizantes no coração de Nova York, Peter enfrenta seu momento mais dramático ao tentar proteger Gwen Stacy de um destino trágico.</p>
                     </div>
                     <button class="btn-toggle" onclick="toggleText('text-2', this)">
-                        <span>Ler mais</span> &downarrow;
-                    </button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="Homem-Aranha 3" class="card-img">
-                <div class="card-content">
-                    <h3>Homem-Aranha 3 (2007)</h3>
-                    <div class="card-text" id="text-3">
-                        <p>O encerramento épico da saga. Peter entra em contato com o simbionte alienígena negro que amplia sua arrogância, enquanto precisa enfrentar o Homem de Areia, o Novo Duende e a ascensão de Venom. Uma batalha épica sobre perdão e redenção.</p>
-                    </div>
-                    <button class="btn-toggle" onclick="toggleText('text-3', this)">
                         <span>Ler mais</span> &downarrow;
                     </button>
                 </div>
@@ -74,16 +71,17 @@
         </section>
 
         <section class="conclusion">
-            <h4>O Legado Inabalável</h4>
-            <p>A trilogia de Sam Raimi não apenas redefiniu a cultura pop, mas também moldou a infância e juventude de toda uma geração. A atuação emotiva de Tobey Maguire e as lições de responsabilidade continuam vivas no coração de todos os fãs do Amigão da Vizinhança.</p>
+            <h4>O Legado do Aranha de Garfield</h4>
+            <p>O desempenho visceral de Andrew Garfield conquistou os fãs ao redor do mundo. Seu estilo de combate acrobático e a entrega emocional tornaram sua versão do teioso inesquecível na história do cinema.</p>
         </section>
     </main>
 
     <footer>
-        <p>Projeto Trilogia Homem-Aranha &copy; 2026. Feito para fãs do Aranha.</p>
+        <p>Projeto O Espetacular Homem-Aranha &copy; 2026. Feito para fãs.</p>
     </footer>
 
     <script>
+        /* Expansão de textos */
         function toggleText(elementId, btn) {
             const textElement = document.getElementById(elementId);
             const isExpanded = textElement.classList.contains('expanded');
@@ -94,6 +92,20 @@
             } else {
                 textElement.classList.add('expanded');
                 btn.innerHTML = '<span>Ler menos</span> &uparrow;';
+            }
+        }
+
+        /* Troca de Tema (Claro / Escuro) */
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('theme-btn');
+            
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                btn.innerHTML = '☀️ Modo Claro';
+            } else {
+                btn.innerHTML = '🌙 Modo Escuro';
             }
         }
     </script>
