@@ -1,19 +1,102 @@
 <!DOCTYPE html>
-<html lang "pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trilogia Homem-Aranha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">Spider-Web</div>
+            <span class="badge">Trilogia Clássica</span>
+        </div>
+    </nav>
+
     <header>
-        <hl>titulo principal do blog</hl>
-        <p>escrever brevemente o que tem no blog</p>
+        <div class="container">
+            <h1>Com Grandes Poderes,<br>Vêm Grandes Responsabilidades</h1>
+            <p class="subtitle">O guia definitivo sobre a inesquecível trilogia do Homem-Aranha dirigida por Sam Raimi e estrelada por Tobey Maguire.</p>
+        </div>
     </header>
-    <main>
-        <h2>subtitulo</h2>
-        <p>escrevendo detalhandamente sobre o conteudo principal do blog</p>
-        
+
+    <main class="container">
+        <div class="intro-box">
+            <p class="intro">
+                Lançada no início dos anos 2000, a trilogia do Homem-Aranha revolucionou o cinema de super-heróis. Com uma mistura perfeita de ação, drama humano e vilões marcantes, Peter Parker mostrou ao mundo o peso de equilibrar a vida de um jovem comum com o dever de salvar Nova York.
+            </p>
+        </div>
+
+        <section class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1635863138275-d9b33299680b?auto=format&fit=crop&w=800&q=80" alt="Homem-Aranha 1" class="card-img">
+                <div class="card-content">
+                    <h3>Homem-Aranha (2002)</h3>
+                    <div class="card-text" id="text-1">
+                        <p>O início de tudo. Acompanhamos a picada da aranha geneticamente modificada, a trágica perda do Tio Ben e o surgimento do Duende Verde (Norman Osborn). É o filme que estabeleceu a jornada do herói e provou o potencial das adaptações de quadrinhos nos cinemas modernos.</p>
+                    </div>
+                    <button class="btn-toggle" onclick="toggleText('text-1', this)">
+                        <span>Ler mais</span> &downarrow;
+                    </button>
+                </div>
+            </div>
+           
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?auto=format&fit=crop&w=800&q=80" alt="Homem-Aranha 2" class="card-img">
+                <div class="card-content">
+                    <h3>Homem-Aranha 2 (2004)</h3>
+                    <div class="card-text" id="text-2">
+                        <p>Aclamado como uma das melhores sequências de super-heróis de todos os tempos. Peter Parker enfrenta o bloqueio de seus poderes enquanto lida com a dor de perder sua vida pessoal e a ameaça do trágico Doutor Octopus (Doc Ock). A cena do trem continua icônica.</p>
+                    </div>
+                    <button class="btn-toggle" onclick="toggleText('text-2', this)">
+                        <span>Ler mais</span> &downarrow;
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="Homem-Aranha 3" class="card-img">
+                <div class="card-content">
+                    <h3>Homem-Aranha 3 (2007)</h3>
+                    <div class="card-text" id="text-3">
+                        <p>O encerramento épico da saga. Peter entra em contato com o simbionte alienígena negro que amplia sua arrogância, enquanto precisa enfrentar o Homem de Areia, o Novo Duende e a ascensão de Venom. Uma batalha épica sobre perdão e redenção.</p>
+                    </div>
+                    <button class="btn-toggle" onclick="toggleText('text-3', this)">
+                        <span>Ler mais</span> &downarrow;
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="conclusion">
+            <h4>O Legado Inabalável</h4>
+            <p>A trilogia de Sam Raimi não apenas redefiniu a cultura pop, mas também moldou a infância e juventude de toda uma geração. A atuação emotiva de Tobey Maguire e as lições de responsabilidade continuam vivas no coração de todos os fãs do Amigão da Vizinhança.</p>
+        </section>
     </main>
+
+    <footer>
+        <p>Projeto Trilogia Homem-Aranha &copy; 2026. Feito para fãs do Aranha.</p>
+    </footer>
+
+    <script>
+        function toggleText(elementId, btn) {
+            const textElement = document.getElementById(elementId);
+            const isExpanded = textElement.classList.contains('expanded');
+
+            if (isExpanded) {
+                textElement.classList.remove('expanded');
+                btn.innerHTML = '<span>Ler mais</span> &downarrow;';
+            } else {
+                textElement.classList.add('expanded');
+                btn.innerHTML = '<span>Ler menos</span> &uparrow;';
+            }
+        }
+    </script>
+
 </body>
 </html>
