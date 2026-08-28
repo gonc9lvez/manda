@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Espetacular Homem-Aranha</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +18,7 @@
             <div class="logo">Spider-Garfield</div>
             <div class="nav-controls">
                 <span class="badge">Saga Andrew Garfield</span>
-                <button class="btn-theme" id="theme-btn" onclick="toggleTheme()">🌙 Modo Escuro</button>
+                <button class="btn-theme" id="theme-btn" aria-label="Alternar tema">🌙 Modo Escuro</button>
             </div>
         </div>
     </nav>
@@ -41,33 +43,31 @@
         </div>
 
         <section class="grid">
-            <!-- Lacuna Filme 1 -->
-            <div class="card">
+            <article class="card">
                 <img src="https://images.unsplash.com/photo-1604200213928-ba3cf4fc8436?auto=format&fit=crop&w=800&q=80" alt="O Espetacular Homem-Aranha 1" class="card-img">
                 <div class="card-content">
                     <h3>O Espetacular Homem-Aranha (2012)</h3>
                     <div class="card-text" id="text-1">
-                        <p>Peter Parker investiga o desaparecimento de seus pais e acaba no laboratório da Oscorp. Lá, ele é picado por uma aranha modificada e ganha superpoderes. Enfrentando o dr. Curt Connors transformado no temível Lagarto, Peter precisa aprender o verdadeiro peso de proteger a cidade.</p>
+                        <p>Peter Parker investiga o desaparecimento de seus pais e acaba no laboratório da Oscorp. Lá, ele é picado por uma aranha modificada e ganha superpoderes. Enfrentando o Dr. Curt Connors transformado no temível Lagarto, Peter precisa aprender o verdadeiro peso de proteger a cidade.</p>
                     </div>
-                    <button class="btn-toggle" onclick="toggleText('text-1', this)">
+                    <button class="btn-toggle" data-target="text-1">
                         <span>Ler mais</span> &downarrow;
                     </button>
                 </div>
-            </div>
+            </article>
            
-            <!-- Lacuna Filme 2 -->
-            <div class="card">
+            <article class="card">
                 <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="O Espetacular Homem-Aranha 2" class="card-img">
                 <div class="card-content">
                     <h3>O Espetacular Homem-Aranha 2: A Ameaça de Electro (2014)</h3>
                     <div class="card-text" id="text-2">
                         <p>O herói precisa lidar com vilões poderosos como Electro e o Duende Verde (Harry Osborn). Em meio a batalhas eletrizantes no coração de Nova York, Peter enfrenta seu momento mais dramático ao tentar proteger Gwen Stacy de um destino trágico.</p>
                     </div>
-                    <button class="btn-toggle" onclick="toggleText('text-2', this)">
+                    <button class="btn-toggle" data-target="text-2">
                         <span>Ler mais</span> &downarrow;
                     </button>
                 </div>
-            </div>
+            </article>
         </section>
 
         <section class="conclusion">
@@ -80,35 +80,6 @@
         <p>Projeto O Espetacular Homem-Aranha &copy; 2026. Feito para fãs.</p>
     </footer>
 
-    <script>
-        /* Expansão de textos */
-        function toggleText(elementId, btn) {
-            const textElement = document.getElementById(elementId);
-            const isExpanded = textElement.classList.contains('expanded');
-
-            if (isExpanded) {
-                textElement.classList.remove('expanded');
-                btn.innerHTML = '<span>Ler mais</span> &downarrow;';
-            } else {
-                textElement.classList.add('expanded');
-                btn.innerHTML = '<span>Ler menos</span> &uparrow;';
-            }
-        }
-
-        /* Troca de Tema (Claro / Escuro) */
-        function toggleTheme() {
-            const body = document.body;
-            const btn = document.getElementById('theme-btn');
-            
-            body.classList.toggle('dark-mode');
-
-            if (body.classList.contains('dark-mode')) {
-                btn.innerHTML = '☀️ Modo Claro';
-            } else {
-                btn.innerHTML = '🌙 Modo Escuro';
-            }
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
