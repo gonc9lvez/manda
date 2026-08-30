@@ -1,19 +1,25 @@
 :root {
-    --bg-color: #f8f9fa;
+    --bg-image: url('bg-light.jpg');
     --text-color: #1a1a1a;
-    --card-bg: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.88);
     --accent-red: #d32f2f;
     --accent-blue: #1976d2;
-    --border-color: #e0e0e0;
-    --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    --border-color: rgba(0, 0, 0, 0.12);
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    --nav-bg: rgba(255, 255, 255, 0.85);
+    --nav-text: #1a1a1a;
+    --web-color: rgba(20, 20, 20, 0.8);
 }
 
 body.dark-mode {
-    --bg-color: #0f1115;
+    --bg-image: url('bg-dark.jpg');
     --text-color: #f0f0f0;
-    --card-bg: #181b20;
-    --border-color: #2a2e35;
-    --shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    --card-bg: rgba(24, 27, 32, 0.88);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --nav-bg: rgba(15, 17, 21, 0.88);
+    --nav-text: #ffffff;
+    --web-color: rgba(255, 255, 255, 0.85);
 }
 
 * {
@@ -24,15 +30,20 @@ body.dark-mode {
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-image 0.4s ease, color 0.3s ease;
     line-height: 1.6;
     position: relative;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* Canvas para as teias interativas */
+/* Canvas overlay para o efeito de teias ao clicar */
 #web-canvas {
     position: fixed;
     top: 0;
@@ -51,27 +62,44 @@ body {
 
 /* Navegação */
 nav {
-    background-color: rgba(15, 17, 21, 0.85);
-    backdrop-filter: blur(10px);
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 12px 20px;
 }
 
-.logo {
+/* Foto em círculo e Nome do Andrew no canto esquerdo */
+.profile-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-red);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.profile-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 1px;
+    color: var(--nav-text);
+    letter-spacing: 0.5px;
 }
 
 .nav-controls {
@@ -83,7 +111,7 @@ nav {
 .badge {
     background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     padding: 4px 12px;
     border-radius: 20px;
@@ -92,75 +120,53 @@ nav {
 
 .btn-theme {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #fff;
+    border: 1px solid var(--border-color);
+    color: var(--nav-text);
     padding: 6px 14px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 0.85rem;
+    font-weight: 600;
     transition: all 0.2s ease;
 }
 
 .btn-theme:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #fff;
+    background: rgba(125, 125, 125, 0.15);
 }
 
-/* Header principal com a cena da Torre de Relógio */
+/* Header principal */
 .hero-header {
     position: relative;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url('https://m.media-amazon.com/images/M/MVBMTY4MTM5NDI3NV5BMl5BanBnXkFtZTgwNTI5NDM3MDE@._V1_.jpg');
-    background-size: cover;
-    background-position: center 25%;
-    background-repeat: no-repeat;
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.4) 0%,
-        rgba(0, 0, 0, 0.7) 60%,
-        var(--bg-color) 100%
-    );
+    padding: 60px 0 40px;
 }
 
 .header-content {
     position: relative;
     z-index: 2;
     text-align: center;
-    color: #ffffff;
-    padding: 60px 20px;
 }
 
 .header-text h1 {
     font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
     line-height: 1.1;
-    margin-bottom: 20px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    margin-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .subtitle {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     max-width: 650px;
     margin: 0 auto;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    font-weight: 400;
+    opacity: 0.9;
 }
 
 /* Conteúdo Principal */
 .intro-box {
-    margin: -40px auto 40px auto;
-    position: relative;
-    z-index: 10;
+    margin: 20px auto 40px auto;
     background: var(--card-bg);
+    backdrop-filter: blur(8px);
     padding: 30px;
     border-radius: 12px;
     box-shadow: var(--shadow);
@@ -169,7 +175,7 @@ nav {
 }
 
 .intro {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     text-align: center;
 }
 
@@ -182,6 +188,7 @@ nav {
 
 .card {
     background-color: var(--card-bg);
+    backdrop-filter: blur(8px);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -215,8 +222,7 @@ nav {
 
 .card-text {
     font-size: 0.95rem;
-    color: var(--text-color);
-    opacity: 0.85;
+    opacity: 0.9;
     margin-bottom: 20px;
     max-height: 80px;
     overflow: hidden;
@@ -245,6 +251,7 @@ nav {
     text-align: center;
     padding: 40px;
     background-color: var(--card-bg);
+    backdrop-filter: blur(8px);
     border-radius: 12px;
     border: 1px solid var(--border-color);
     margin-bottom: 60px;
@@ -260,9 +267,10 @@ nav {
 footer {
     text-align: center;
     padding: 30px;
+    background: var(--nav-bg);
     border-top: 1px solid var(--border-color);
     font-size: 0.9rem;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 @media (max-width: 768px) {
@@ -272,5 +280,9 @@ footer {
     
     .subtitle {
         font-size: 1rem;
+    }
+
+    .badge {
+        display: none;
     }
 }
