@@ -15,14 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const textElement = document.getElementById(targetId);
             const isExpanded = textElement.classList.toggle('expanded');
             
-            button.querySelector('span').textContent = isExpanded ? 'Ler menos' : 'Ler mais';
             button.innerHTML = isExpanded 
                 ? '<span>Ler menos</span> &uparrow;' 
                 : '<span>Ler mais</span> &downarrow;';
         });
     });
 
-    // --- Efeito de Teias de Aranha ao Clicar ---
+    // --- Efeito Interativo de Teias de Aranha ao Clicar ---
     const canvas = document.getElementById('web-canvas');
     const ctx = canvas.getContext('2d');
     let webs = [];
@@ -40,12 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
             this.x = x;
             this.y = y;
             this.radius = 0;
-            this.maxRadius = Math.random() * 40 + 50;
-            this.spokes = Math.floor(Math.random() * 4) + 6; // 6 a 9 raios
+            this.maxRadius = Math.random() * 30 + 50;
+            this.spokes = 8;
             this.rings = 4;
             this.opacity = 1;
-            this.growthSpeed = 4;
+            this.growthSpeed = 3;
             this.fadeSpeed = 0.02;
+            
+            // Define a cor da teia dependendo do tema ativo
+            const isDark = document.body.classList.contains('dark-mode');
+            this.color = isDark ? '255, 255, 255' : '20, 20, 20';
         }
 
         update() {
@@ -59,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
         draw() {
             ctx.save();
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity})`;
+            ctx.strokeStyle = `rgba(${this.color}, ${this.opacity})`;
             ctx.lineWidth = 1.2;
 
-            // Desenhar os raios principais da teia
+            // Linhas radiais (raios da teia)
             for (let i = 0; i < this.spokes; i++) {
                 const angle = (Math.PI * 2 / this.spokes) * i;
                 const endX = this.x + Math.cos(angle) * this.radius;
@@ -72,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.lineTo(endX, endY);
             }
 
-            // Desenhar os anéis concêntricos da teia
+            // Espirais/Anéis da teia
             const currentRings = Math.floor((this.radius / this.maxRadius) * this.rings);
             for (let r = 1; r <= currentRings; r++) {
                 const rRadius = (this.radius / this.rings) * r;
@@ -88,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     ctx.moveTo(p1x, p1y);
                     ctx.quadraticCurveTo(
-                        this.x + Math.cos((angle1 + angle2) / 2) * (rRadius * 0.9),
-                        this.y + Math.sin((angle1 + angle2) / 2) * (rRadius * 0.9),
+                        this.x + Math.cos((angle1 + angle2) / 2) * (rRadius * 0.88),
+                        this.y + Math.sin((angle1 + angle2) / 2) * (rRadius * 0.88),
                         p2x, p2y
                     );
                 }
@@ -100,15 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Criar teia no local do clique
+    // Registra o clique para desenhar a teia
     window.addEventListener('click', (e) => {
-        // Evita criar teia se o clique for no botão de alternar tema
-        if (e.target.closest('#theme-btn')) return;
+        // Ignora cliques no botão do tema ou nos botões de ler mais para não atrapalhar a ação
+        if (e.target.closest('#theme-btn') || e.target.closest('.btn-toggle')) return;
         
         webs.push(new SpiderWeb(e.clientX, e.clientY));
     });
 
-    // Loop de animação
+    // Loop de renderização no Canvas
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
